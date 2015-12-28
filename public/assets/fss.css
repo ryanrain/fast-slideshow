@@ -1,0 +1,33 @@
+.js_slider {
+  position: relative; }
+  .js_slider .frame {
+    width: 100%;
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    white-space: nowrap; }
+  .js_slider .slides {
+    display: inline-block;
+    padding: 0; }
+  .js_slider li {
+    position: relative;
+    display: inline-block;
+    width: 100%; }
+  .js_slider img {
+    width: 100%;
+    height: auto; }
+
+.js_next, .js_prev {
+  position: absolute;
+  z-index: 30;
+  top: 40%;
+  display: block;
+  width: 30px;
+  height: 52.5px; }
+
+.js_prev {
+  left: 10px; }
+
+.js_next {
+  right: 10px; }
