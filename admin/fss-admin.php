@@ -48,6 +48,22 @@ function fss_settings_init(  ) {
 	);
 
 	add_settings_field( 
+		'fss_single_slide_duration', 
+		__( 'Slide duration on internal pages', 'fss' ), 
+		'fss_single_slide_duration', 
+		'pluginPage', 
+		'fss_pluginPage_section' 
+	);
+
+	add_settings_field( 
+		'fss_single_image_size', 
+		__( 'Image size for slideshows on internal pages', 'fss' ), 
+		'fss_single_image_size', 
+		'pluginPage', 
+		'fss_pluginPage_section' 
+	);
+
+	add_settings_field( 
 		'fss_homepage_slide_duration', 
 		__( 'Slide duration on the homepage', 'fss' ), 
 		'fss_homepage_slide_duration', 
@@ -56,13 +72,12 @@ function fss_settings_init(  ) {
 	);
 
 	add_settings_field( 
-		'fss_single_slide_duration', 
-		__( 'Slide duration on internal pages', 'fss' ), 
-		'fss_single_slide_duration', 
+		'fss_homepage_image_size', 
+		__( 'Image size for the slideshow on the homepage', 'fss' ), 
+		'fss_homepage_image_size', 
 		'pluginPage', 
 		'fss_pluginPage_section' 
 	);
-
 
 }
 
@@ -93,7 +108,7 @@ function fss_homepage_slide_duration(  ) {
 	global $fss_options;
 	?>
 	<select name='fss_settings[fss_homepage_slide_duration]'>
-		<option value='1000' <?php selected( $fss_options['fss_homepage_slide_duration'], 1000 ); ?>>1 seconds</option>
+		<option value='1000' <?php selected( $fss_options['fss_homepage_slide_duration'], 1000 ); ?>>1 second</option>
 		<option value='2000' <?php selected( $fss_options['fss_homepage_slide_duration'], 2000 ); ?>>2 seconds</option>
 		<option value='3000' <?php selected( $fss_options['fss_homepage_slide_duration'], 3000 ); ?>>3 seconds</option>
 		<option value='4000' <?php selected( $fss_options['fss_homepage_slide_duration'], 4000 ); ?>>4 seconds</option>
@@ -122,7 +137,7 @@ function fss_single_slide_duration(  ) {
 	global $fss_options;
 	?>
 	<select name='fss_settings[fss_single_slide_duration]'>
-		<option value='1000' <?php selected( $fss_options['fss_single_slide_duration'], 1000 ); ?>>1 seconds</option>
+		<option value='1000' <?php selected( $fss_options['fss_single_slide_duration'], 1000 ); ?>>1 second</option>
 		<option value='2000' <?php selected( $fss_options['fss_single_slide_duration'], 2000 ); ?>>2 seconds</option>
 		<option value='3000' <?php selected( $fss_options['fss_single_slide_duration'], 3000 ); ?>>3 seconds</option>
 		<option value='4000' <?php selected( $fss_options['fss_single_slide_duration'], 4000 ); ?>>4 seconds</option>
@@ -144,6 +159,36 @@ function fss_single_slide_duration(  ) {
 		<option value='20000' <?php selected( $fss_options['fss_single_slide_duration'], 20000 ); ?>>20 seconds</option>
 	</select>
 <?php
+}
+
+function fss_single_image_size() {
+	global $fss_options;
+	$added_sizes = get_intermediate_image_sizes();
+	?>
+	<select name='fss_settings[fss_single_image_size]'>
+		<?php
+		foreach( $added_sizes as $key => $value) { ?>
+			<option value='<?php echo $value; ?>' <?php selected( $fss_options['fss_single_image_size'], $value ); ?>><?php echo $value; ?></option>
+		<?php
+		}
+		?>
+	</select>
+	<?php
+}
+
+function fss_homepage_image_size() {
+	global $fss_options;
+	$added_sizes = get_intermediate_image_sizes();
+	?>
+	<select name='fss_settings[fss_homepage_image_size]'>
+		<?php
+		foreach( $added_sizes as $key => $value) { ?>
+			<option value='<?php echo $value; ?>' <?php selected( $fss_options['fss_homepage_image_size'], $value ); ?>><?php echo $value; ?></option>
+		<?php
+		}
+		?>
+	</select>
+	<?php
 }
 
 function fss_options_page(  ) { 

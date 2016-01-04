@@ -71,9 +71,17 @@ function fss_inline_script () {
 }
 
 function fss_handle_shortcode() {
-	// global $fss_options;
 	global $post;
 	if( is_a( $post, 'WP_Post' ) && is_single() && has_shortcode( $post->post_content, 'fast-slideshow') ) {
+		
+		global $fss_options;
+		
+		if(is_home() || is_front_page()) {
+			$image_size .= $fss_options['fss_homepage_image_size'];
+		} else {
+			$image_size .= $fss_options['fss_single_image_size'];
+		}
+
 		$args = array(
 			'post_type' => 'attachment',
 			'numberposts' => -1,
@@ -86,7 +94,7 @@ function fss_handle_shortcode() {
 	                <div class="frame js_frame">
 	                    <ul class="slides js_slides">';
 						foreach($images as $image):
-							$markup .= '<li class="js_slide">' . wp_get_attachment_image($image->ID, 'medium') . '</li>';
+							$markup .= '<li class="js_slide">' . wp_get_attachment_image($image->ID, $image_size ) . '</li>';
 						endforeach;
 		$markup .= '	</ul>
 	                </div>
