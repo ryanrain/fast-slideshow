@@ -10,10 +10,10 @@
  *
  * @link              http://www.treelinemedia.com/
  * @since             1.0.0
- * @package           Fast_Shortcode_Slideshow
+ * @package           Fast_Slideshow
  *
  * @wordpress-plugin
- * Plugin Name:       Fast Shortcode Slideshow
+ * Plugin Name:       Fast Slideshow
  * Plugin URI:        http://www.treelinemedia.com/
  * Description:       Adds a [fast-slideshow] shortcode that displays all images attached to a post
  * Version:           1.0.0
@@ -34,20 +34,20 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'FSS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'FS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
-include FSS_PLUGIN_DIR . 'admin/fss-admin.php';
+include FS_PLUGIN_DIR . 'admin/fss-admin.php';
 
-include FSS_PLUGIN_DIR . 'public/fss-public.php';
+include FS_PLUGIN_DIR . 'public/fss-public.php';
 
 register_activation_hook( __FILE__, 'activate_fss' );
 function activate_fss () {
 	
 	add_option( 
-		'fss_settings', 
+		'fs_settings', 
 		array (
-			'fss_js_checkbox' => '1',
-			'fss_css_checkbox' => '1'
+			'fs_js_checkbox' => '1',
+			'fs_css_checkbox' => '1'
 		)
 	); 
 
@@ -56,7 +56,7 @@ function activate_fss () {
 register_deactivation_hook( __FILE__, 'deactivate_fss' );
 function deactivate_fss () {
 	delete_option( 
-		'fss_settings'
+		'fs_settings'
 	); 
 }
 
