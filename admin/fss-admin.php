@@ -22,68 +22,76 @@ function fss_add_admin_menu(  ) {
 add_action( 'admin_init', 'fss_settings_init' );
 function fss_settings_init(  ) { 
 
-	register_setting( 'pluginPage', 'fss_settings' );
+	register_setting( 'performance', 'fss_settings' );
+	register_setting( 'homePage', 'fss_settings' );
+	register_setting( 'internalPages', 'fss_settings' );
 
 	add_settings_section(
-		'fss_pluginPage_section', 
+		'fss_performance_section', 
 		__( '', 'fss' ), 
-		'fss_settings_section_callback', 
-		'pluginPage'
+		'', 
+		'performance'
+	);
+	add_settings_section(
+		'fss_homePage_section', 
+		__( '', 'fss' ), 
+		'', 
+		'homePage'
+	);
+	add_settings_section(
+		'fss_internalPages_section', 
+		__( '', 'fss' ), 
+		'', 
+		'internalPages'
 	);
 
 	add_settings_field( 
 		'fss_js_checkbox', 
 		__( 'Load slideshow javascript?', 'fss' ), 
 		'fss_js_checkbox', 
-		'pluginPage', 
-		'fss_pluginPage_section' 
+		'performance', 
+		'fss_performance_section' 
 	);
 
 	add_settings_field( 
 		'fss_css_checkbox', 
 		__( 'Load slideshow css?', 'fss' ), 
 		'fss_css_checkbox', 
-		'pluginPage', 
-		'fss_pluginPage_section' 
+		'performance', 
+		'fss_performance_section' 
 	);
 
 	add_settings_field( 
 		'fss_single_slide_duration', 
 		__( 'Slide duration on internal pages', 'fss' ), 
 		'fss_single_slide_duration', 
-		'pluginPage', 
-		'fss_pluginPage_section' 
+		'internalPages', 
+		'fss_internalPages_section' 
 	);
 
 	add_settings_field( 
 		'fss_single_image_size', 
 		__( 'Image size for slideshows on internal pages', 'fss' ), 
 		'fss_single_image_size', 
-		'pluginPage', 
-		'fss_pluginPage_section' 
+		'internalPages', 
+		'fss_internalPages_section' 
 	);
 
 	add_settings_field( 
 		'fss_homepage_slide_duration', 
 		__( 'Slide duration on the homepage', 'fss' ), 
 		'fss_homepage_slide_duration', 
-		'pluginPage', 
-		'fss_pluginPage_section' 
+		'homePage', 
+		'fss_homePage_section' 
 	);
 
 	add_settings_field( 
 		'fss_homepage_image_size', 
 		__( 'Image size for the slideshow on the homepage', 'fss' ), 
 		'fss_homepage_image_size', 
-		'pluginPage', 
-		'fss_pluginPage_section' 
+		'homePage', 
+		'fss_homePage_section' 
 	);
-
-}
-
-function fss_settings_section_callback(  ) { 
-
-	 echo __( 'Files are loaded ONLY on pages/posts that contain the shortcode. Files are not loaded on listings, such as the blog posts page or category pages.', 'fss' );
 
 }
 
