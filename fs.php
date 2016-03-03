@@ -47,7 +47,15 @@ function activate_fss () {
 		'fs_settings', 
 		array (
 			'fs_js_checkbox' => '1',
-			'fs_css_checkbox' => '1'
+			'fs_css_checkbox' => '1',
+			'fs_homepage_slide_duration' => '6000',
+			'fs_homepage_image_size' => 'large',
+			'fs_homepage_autostart_checkbox' => '1',
+			'fs_homepage_position_checkbox' => '1',
+			'fs_single_slide_duration' => '6000',
+			'fs_single_image_size' => 'large',
+			'fs_single_autostart_checkbox' => '0',
+			'fs_single_position_checkbox' => '1'
 		)
 	); 
 
@@ -59,8 +67,3 @@ function deactivate_fss () {
 		'fs_settings'
 	); 
 }
-
-/* tasks:
-
-
-*/
