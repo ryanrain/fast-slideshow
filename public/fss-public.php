@@ -8,11 +8,11 @@ function fs_scripts() {
 	global $fs_options;
 	global $post;
 	if( is_a( $post, 'WP_Post' ) && is_single() && has_shortcode( $post->post_content, 'fast-slideshow') ) {
-		if ($fs_options['fs_js_checkbox'] == '1') {
+		if ( isset( $fs_options['fs_js_checkbox'] ) ) {
 			wp_register_script( 'fast-slideshow-js', plugins_url() . '/fast-slideshow/public/assets/fss.js', false, '2.0', true );
 			wp_enqueue_script( 'fast-slideshow-js');
 		}
-		if ($fs_options['fs_css_checkbox'] == '1') {
+		if ( isset( $fs_options['fs_css_checkbox'] ) ) {
 			wp_register_style( 'fast-slideshow-css', plugins_url() . '/fast-slideshow/public/assets/fss.css', false, '1.0', 'screen' );
 			wp_enqueue_style( 'fast-slideshow-css');
 		}
@@ -24,9 +24,9 @@ function fs_inline_script () {
 	global $fs_options;
 
 	if(is_home() || is_front_page()) {
-		$slide_duration .= $fs_options['fs_homepage_slide_duration'];
+		$slide_duration = $fs_options['fs_homepage_slide_duration'];
 	} else {
-		$slide_duration .= $fs_options['fs_single_slide_duration'];
+		$slide_duration = $fs_options['fs_single_slide_duration'];
 	}
 
 	$script = 
@@ -38,8 +38,8 @@ function fs_inline_script () {
 			    // enableMouseEvents: true
 			});";
 
-	if ( ( $fs_options['fs_homepage_autostart_checkbox'] == '1' && (is_home() || is_front_page()) )
-		|| ( $fs_options['fs_single_autostart_checkbox'] == '1' && is_single() ) ) {
+	if ( ( isset( $fs_options['fs_homepage_autostart_checkbox'] ) && (is_home() || is_front_page()) )
+		|| ( isset( $fs_options['fs_single_autostart_checkbox'] ) && is_single() ) ) {
 		
 		$script .= "
 		var sliderAuto = true;
@@ -57,8 +57,8 @@ function fs_inline_script () {
 		sliderMarkup.addEventListener('on.lory.touchend', pauseSlideshow);";
 	}
 
-	if ( ( $fs_options['fs_homepage_position_checkbox'] == '1' && (is_home() || is_front_page()) )
-		|| ( $fs_options['fs_single_position_checkbox'] == '1' && is_single() ) ) {
+	if ( ( isset( $fs_options['fs_homepage_position_checkbox'] ) && (is_home() || is_front_page()) )
+		|| ( isset( $fs_options['fs_single_position_checkbox'] ) && is_single() ) ) {
 		
 		$script .= "
 		var positions = document.querySelectorAll('.js_slider_position span');
@@ -123,8 +123,8 @@ function fs_handle_shortcode() {
 		$markup .= '</span>';
 	    $markup .= '</div>';
 
-	    if ( ( $fs_options['fs_homepage_position_checkbox'] == '1' && (is_home() || is_front_page()) )
-	    	|| ( $fs_options['fs_single_position_checkbox'] == '1' && is_single() ) ) {
+	    if ( ( isset( $fs_options['fs_homepage_position_checkbox'] ) && (is_home() || is_front_page()) )
+	    	|| ( isset( $fs_options['fs_single_position_checkbox'] ) && is_single() ) ) {
 	    	
 	    	$markup .= '<div class="js_slider_position">';
 				foreach($images as $image):

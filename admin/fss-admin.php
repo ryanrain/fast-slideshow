@@ -193,14 +193,14 @@ function fs_homepage_image_size() {
 function fs_homepage_autostart_checkbox(  ) { 
 	global $fs_options;
 	?>
-	<input type='checkbox' name='fs_settings[fs_homepage_autostart_checkbox]' <?php checked( $fs_options['fs_homepage_autostart_checkbox'], 1 ); ?> value='1'>
+	<input type='checkbox' name='fs_settings[fs_homepage_autostart_checkbox]' <?php checked( isset( $fs_options['fs_homepage_autostart_checkbox'] ) ); ?> value='1'>
 	<?php
 }
 
 function fs_homepage_position_checkbox(  ) { 
 	global $fs_options;
 	?>
-	<input type='checkbox' name='fs_settings[fs_homepage_position_checkbox]' <?php checked( $fs_options['fs_homepage_position_checkbox'], 1 ); ?> value='1'>
+	<input type='checkbox' name='fs_settings[fs_homepage_position_checkbox]' <?php checked( isset( $fs_options['fs_homepage_position_checkbox'] ) ); ?> value='1'>
 	<?php
 }
 
@@ -252,14 +252,14 @@ function fs_single_image_size() {
 function fs_single_autostart_checkbox(  ) { 
 	global $fs_options;
 	?>
-	<input type='checkbox' name='fs_settings[fs_single_autostart_checkbox]' <?php checked( $fs_options['fs_single_autostart_checkbox'], 1 ); ?> value='1'>
+	<input type='checkbox' name='fs_settings[fs_single_autostart_checkbox]' <?php checked( isset( $fs_options['fs_single_autostart_checkbox'] ) ); ?> value='1'>
 	<?php
 }
 
 function fs_single_position_checkbox(  ) { 
 	global $fs_options;
 	?>
-	<input type='checkbox' name='fs_settings[fs_single_position_checkbox]' <?php checked( $fs_options['fs_single_position_checkbox'], 1 ); ?> value='1'>
+	<input type='checkbox' name='fs_settings[fs_single_position_checkbox]' <?php checked( isset( $fs_options['fs_single_position_checkbox'] ) ); ?> value='1'>
 	<?php
 }
 
@@ -269,13 +269,13 @@ function fs_single_position_checkbox(  ) {
 function fs_js_checkbox(  ) { 
 	global $fs_options;
 	?>
-	<input type='checkbox' name='fs_settings[fs_js_checkbox]' <?php checked( $fs_options['fs_js_checkbox'], 1 ); ?> value='1'>
+	<input type='checkbox' name='fs_settings[fs_js_checkbox]' <?php checked( isset( $fs_options['fs_js_checkbox'] ) ); ?> value='1'>
 	<?php
 }
 
 function fs_css_checkbox(  ) { 
 	global $fs_options;
 	?>
-	<input type='checkbox' name='fs_settings[fs_css_checkbox]' <?php checked( $fs_options['fs_css_checkbox'], 1 ); ?> value='1'>
+	<input type='checkbox' name='fs_settings[fs_css_checkbox]' <?php checked( isset( $fs_options['fs_css_checkbox'] ) ); ?> value='1'>
 	<?php
 }
